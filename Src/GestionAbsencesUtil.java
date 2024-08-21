@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 public class GestionAbsencesUtil {
@@ -83,26 +84,31 @@ public class GestionAbsencesUtil {
         updateNextId("nextUserId", nextId + 1);
         return nextId;
     }
-
     public static void addApprenant(Promotion promotion, Apprenant apprenant) {
-        // TODO
+        promotion.getApprenants().add(apprenant);
     }
 
     public static void modifyAbsences(Apprenant apprenant, int nbAbsences) {
-        // TODO
+        apprenant.setNbAbsences(nbAbsences);
+    }
+    
+    public static void setDelegueStatus(Apprenant apprenant, boolean isDelegue) {
+        apprenant.setDelegue(isDelegue);
     }
 
     public static void removeApprenant(Promotion promotion, Apprenant apprenant) {
-        // TODO
+        promotion.getApprenants().remove(apprenant);
     }
 
     public static List<Apprenant> sortApprenantsByName(Promotion promotion) {
-        // TODO
-        return null;
+        List<Apprenant> apprenants = promotion.getApprenants();
+        apprenants.sort(Comparator.comparing(Apprenant::getNom, String.CASE_INSENSITIVE_ORDER));
+        return apprenants;
     }
 
     public static List<Apprenant> sortApprenantsByAbsences(Promotion promotion) {
-        // TODO
-        return null;
+        List<Apprenant> apprenants = promotion.getApprenants();
+        apprenants.sort(Comparator.comparingInt(Apprenant::getNbAbsences).reversed());
+        return apprenants;
     }
 }

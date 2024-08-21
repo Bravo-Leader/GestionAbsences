@@ -31,7 +31,9 @@ public class Promotion {
 
     @Override
     public String toString() {
-        // TODO:
-        return "TODO";
+        return "Promotion{" +
+                "nom='" + nom + '\'' +
+                ", apprenants=" + apprenants +
+                '}';
     }
 }

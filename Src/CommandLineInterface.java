@@ -52,7 +52,7 @@ public class CommandLineInterface {
         System.out.println("1. Trier les élèves par promotion");
         System.out.println("2. Trier les élèves par nom");
         System.out.println("3. Trier les élèves par absentéisme");
-        System.out.println("4. Liste des promotions");
+        System.out.println("4. Lister les promotions");
         System.out.println("5. Rechercher une promotion par nom");
         System.out.println("6. Rechercher un élève par nom");
         System.out.println("7. Menu Admin");
@@ -78,6 +78,12 @@ public class CommandLineInterface {
                     InterfaceUtil.deleteEleve(promotions);
                     break;
                 case 4:
+                    InterfaceUtil.ajouterDelegue(promotions);
+                    break;
+                case 5:
+                    InterfaceUtil.supprimerDelegue(promotions);
+                    break;
+                case 6:
                     subMenuRunning = false;
                     break;
                 default:
@@ -91,7 +97,9 @@ public class CommandLineInterface {
         System.out.println("1. Ajouter un élève");
         System.out.println("2. Modifier le nombre d'absences d'un élève");
         System.out.println("3. Supprimer un élève");
-        System.out.println("4. Retour au menu principal");
+        System.out.println("4. Ajouter un délégué");
+        System.out.println("5. Supprimer un délégué");
+        System.out.println("6. Retour au menu principal");
         System.out.print("Choisissez une option: ");
     }
 

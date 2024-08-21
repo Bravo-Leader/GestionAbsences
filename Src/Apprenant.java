@@ -10,8 +10,7 @@ public class Apprenant {
     private String numTel;
     private int nbAbsences;
     private boolean estDelegue;
-    private List<LocalDate> absenceDates;  // List to store dates of absence
-
+    private List<LocalDate> absenceDates;
     // Default constructor
     public Apprenant() {
         this.absenceDates = new ArrayList<>();
@@ -67,7 +66,13 @@ public class Apprenant {
 
     @Override
     public String toString() {
-        // TODO:
-        return "TODO";
+        return "Apprenant{" +
+        "id='" + id +
+        ",nom='" + nom + '\'' +
+        ", prenom='" + prenom + '\'' +
+        ", email='" + email + '\'' +
+        ", nbAbsences=" + nbAbsences +
+        ", estDelegue=" + estDelegue +
+        '}';
     }
 }
