@@ -11,6 +11,7 @@ public class Apprenant {
     private int nbAbsences;
     private boolean estDelegue;
     private List<LocalDate> absenceDates;
+
     // Default constructor
     public Apprenant() {
         this.absenceDates = new ArrayList<>();
