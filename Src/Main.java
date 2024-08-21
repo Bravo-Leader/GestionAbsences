@@ -7,21 +7,24 @@ public class Main {
     private static final String USERS_FILE = "data/users.ser";
 
     public static void main(String[] args) {
-        // Load promotions and users from serialized files
         List<Promotion> promotions = (List<Promotion>) SerializationUtil.loadObjectFromFile(PROMOTIONS_FILE);
         if (promotions == null) {
-            promotions = createSamplePromotions(); // Fallback to sample data
+            promotions = createSamplePromotions();
         }
 
         List<User> users = (List<User>) SerializationUtil.loadObjectFromFile(USERS_FILE);
         if (users == null) {
-            users = createSampleUsers(); // Fallback to sample data
+            users = createSampleUsers();
         }
 
-        // Start the command line interface
+        //login
+        User loggedInUser = null;
+        while (loggedInUser == null) {
+            loggedInUser = LoginUtil.login(users);
+        }
+
         CommandLineInterface.start(promotions);
 
-        // Save promotions and users to serialized files on exit
         SerializationUtil.saveObjectToFile(promotions, PROMOTIONS_FILE);
         SerializationUtil.saveObjectToFile(users, USERS_FILE);
     }
@@ -41,8 +44,7 @@ public class Main {
 
     private static List<User> createSampleUsers() {
         List<User> users = new ArrayList<>();
-        users.add(new User(1, "admin", "Administrator"));
-        users.add(new User(2, "instructor", "Instructor"));
+        users.add(new User(1, "a.clain", "admin123"));
         return users;
     }
 }
