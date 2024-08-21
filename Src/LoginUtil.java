@@ -14,7 +14,7 @@ public class LoginUtil {
         String password = scanner.nextLine();
 
         for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+            if (user.getUsername().equals(username) && user.checkPassword(password)) {
                 System.out.println("Login successful! Welcome, " + user.getUsername() + ".");
                 return user;
             }
