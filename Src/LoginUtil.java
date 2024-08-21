@@ -7,20 +7,20 @@ public class LoginUtil {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("=== Login ===");
-        System.out.print("Username: ");
+        System.out.print("Utilisateur: ");
         String username = scanner.nextLine();
 
-        System.out.print("Password: ");
+        System.out.print("Mdp: ");
         String password = scanner.nextLine();
 
         for (User user : users) {
             if (user.getUsername().equals(username) && user.checkPassword(password)) {
-                System.out.println("Login successful! Welcome, " + user.getUsername() + ".");
+                System.out.println("Login réussi ! Bienvenue, " + user.getUsername() + ".");
                 return user;
             }
         }
 
-        System.out.println("Invalid username or password.");
+        System.out.println("Mdp ou utilisateur incorrect.");
         return null;
     }
 }
