@@ -1,39 +1,41 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Promotion {
+public class Promotion implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private int id;
     private String nom;
     private List<Apprenant> apprenants;
 
-    // Default constructor
-    public Promotion() {
-        this.apprenants = new ArrayList<>();
-    }
-
-    // Parameterized constructor
     public Promotion(int id, String nom) {
         this.id = id;
         this.nom = nom;
         this.apprenants = new ArrayList<>();
     }
 
-    // Getters and Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public List<Apprenant> getApprenants() { return apprenants; }
-    public void addApprenant(Apprenant apprenant) { this.apprenants.add(apprenant); }
-    public void removeApprenant(Apprenant apprenant) { this.apprenants.remove(apprenant); }
+    public String getNom() {
+        return nom;
+    }
 
-    @Override
-    public String toString() {
-        return "Promotion{" +
-                "nom='" + nom + '\'' +
-                ", apprenants=" + apprenants +
-                '}';
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public List<Apprenant> getApprenants() {
+        return apprenants;
+    }
+
+    public void setApprenants(List<Apprenant> apprenants) {
+        this.apprenants = apprenants;
     }
 }
