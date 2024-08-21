@@ -52,7 +52,7 @@ public class CommandLineInterface {
         System.out.println("1. Trier les élèves par promotion");
         System.out.println("2. Trier les élèves par nom");
         System.out.println("3. Trier les élèves par absentéisme");
-        System.out.println("4. Lister les promotions");
+        System.out.println("4. Liste des promotions");
         System.out.println("5. Rechercher une promotion par nom");
         System.out.println("6. Rechercher un élève par nom");
         System.out.println("7. Menu Admin");

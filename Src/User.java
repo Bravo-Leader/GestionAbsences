@@ -1,16 +1,18 @@
 import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int id;
     private String username;
-    private String password;
+    private String hashedPassword;
 
     public User(int id, String username, String password) {
         this.id = id;
         this.username = username;
-        this.password = password;
+        this.hashedPassword = hashPassword(password);
     }
 
     public int getId() {
@@ -29,8 +31,30 @@ public class User implements Serializable {
         this.username = username;
     }
 
+    public String getHashedPassword() {
+        return hashedPassword;
+    }
+
     public void setPassword(String password) {
-        this.password = password;
+        this.hashedPassword = hashPassword(password);
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error hashing password", e);
+        }
+    }
+
+    public boolean checkPassword(String password) {
+        return this.hashedPassword.equals(hashPassword(password));
     }
 
     @Override

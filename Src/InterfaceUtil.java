@@ -33,7 +33,25 @@ public class InterfaceUtil {
     }
 
     public static void listPromotions(List<Promotion> promotions) {
-        promotions.forEach(promo -> System.out.println("Promotion: " + promo.getNom()));
+        System.out.println("\n=== Liste des Promotions ===");
+        for (Promotion promo : promotions) {
+            double averageAbsenteeism = calculateAverageAbsenteeism(promo);
+            System.out.printf("Promotion: %s, Moyenne d'absentéisme: %.2f\n", promo.getNom(), averageAbsenteeism);
+        }
+    }
+
+    private static double calculateAverageAbsenteeism(Promotion promotion) {
+        List<Apprenant> apprenants = promotion.getApprenants();
+        if (apprenants.isEmpty()) {
+            return 0.0;
+        }
+
+        int totalAbsences = 0;
+        for (Apprenant apprenant : apprenants) {
+            totalAbsences += apprenant.getNbAbsences();
+        }
+
+        return (double) totalAbsences / apprenants.size();
     }
 
     public static void searchPromotionByName(List<Promotion> promotions, String promotionName) {
