@@ -30,7 +30,6 @@ public class User {
 
     @Override
     public String toString() {
-        // TODO:
-        return "TODO";
+        return "User{" + "username='" + username + '\'' + '}';
     }
 }

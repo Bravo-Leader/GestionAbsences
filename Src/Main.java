@@ -1,16 +1,21 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
+
     public static void main(String[] args) {
-  
-        Apprenant apprenant = new Apprenant(1, "Virgile", "Coudert", "v.coudert@sabesoftwares.com", "0623279713", 0, true);
 
+        List<Promotion> promotions = new ArrayList<>();
 
-        Promotion promotion = new Promotion(1, "Promo DI 2022");
-        promotion.addApprenant(apprenant);
+        Promotion promo1 = new Promotion(GestionAbsencesUtil.getNextPromotionId(), "Promo Java 2024");
+        Promotion promo2 = new Promotion(GestionAbsencesUtil.getNextPromotionId(), "Promo Python 2024");
 
-        User user = new User(1, "a.clain", "password123");
+        promo1.getApprenants().add(new Apprenant(GestionAbsencesUtil.getNextApprenantId(), "Doe", "John", "john.doe@example.com", "123456789", 3, false));
+        promo2.getApprenants().add(new Apprenant(GestionAbsencesUtil.getNextApprenantId(), "Smith", "Jane", "jane.smith@example.com", "987654321", 1, false));
 
-        System.out.println(apprenant);
-        System.out.println(promotion);
-        System.out.println(user);
+        promotions.add(promo1);
+        promotions.add(promo2);
+
+        CommandLineInterface.start(promotions);
     }
 }

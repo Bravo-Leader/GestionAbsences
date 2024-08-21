@@ -1,0 +1,3 @@
+nextPromotionId=15;
+nextApprenantId=19;
+nextUserId=1;
